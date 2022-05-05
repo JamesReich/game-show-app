@@ -29,7 +29,9 @@ body {
   height: 100vh;
 }
 
-li, ol, ul {
+li,
+ol,
+ul {
   padding: 0;
   display: inline-block;
 }
@@ -111,7 +113,7 @@ button {
   color: #FFFFFF;
 }
 
-.btn__reset {
+.btn_reset {
   padding: 8px;
   margin: 50px auto;
   background: #FFFFFF;
