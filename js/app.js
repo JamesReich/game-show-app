@@ -6,6 +6,7 @@ const phraseList = document.querySelector('#phrase ul');
 const button = document.querySelectorAll('button');
 const entryMade = document.querySelectorAll('button');
 const liveHeart = document.querySelectorAll('img');
+const gameTitle = document.querySelector('.title');
 
 let missed = 0;
 
@@ -65,9 +66,18 @@ for (let i = 0; i < entryMade.length; i++) {
 
     entryMade[i].addEventListener('click', () => {
 
+
         entryMade[i].classList.add('chosen');
 
+        if (entryMade[i].className == 'chosen') {
+
+            entryMade[i].disabled = true;
+
+        }
+
         checkLetter(entryMade[i]);
+
+        checkWin();
 
     });
 
@@ -105,6 +115,49 @@ function checkLetter(button) {
     return letterFound;
 }
 
+function checkWin() {
+
+    let letter = document.querySelectorAll('.letter');
+    let show = document.querySelectorAll('.show');
+
+    if (letter.length == show.length) {
+
+        gameTitle.innerHTML = 'Congratualtions! You Win!';
+        startGame.textContent = 'Play Again';
+        winOverlay = welcomeOverlay.className = 'win';
+        welcomeOverlay.style.display = 'flex';
+
+        startGame.addEventListener('click', () => {
+
+            restartGame();
+
+        });
+
+
+    } else if (missed > 4) {
+
+        gameTitle.innerHTML = 'GAME OVER';
+        startGame.textContent = 'Try Again';
+        winOverlay = welcomeOverlay.className = 'lose';
+        welcomeOverlay.style.display = 'flex';
+
+        startGame.addEventListener('click', () => {
+
+            restartGame();
+
+        });
+
+
+    }
+
+
+}
+
+function restartGame() {
+
+    window.location.reload();
+
+}
 
 
 
