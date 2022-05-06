@@ -14,6 +14,7 @@ let gamePhrases = ['walk the dog',
     'drink more water',
     'debug the code',
     'it is what it is',
+    'the quick brown fox jumps over the lazy dog',
     'when life gives you lemons make lemonade'];
 
 
@@ -30,7 +31,7 @@ startGame.addEventListener('click', () => {
 //Grabs array 'gamePhrases' and passes the characters into an array
 function getRandomPhraseAsArray(arr) {
 
-    let randomSeed = Math.floor(Math.random() * 5);
+    let randomSeed = Math.floor(Math.random() * 6);
 
     let phraseArray = arr[randomSeed].split('');
 
