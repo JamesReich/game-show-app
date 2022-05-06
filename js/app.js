@@ -99,6 +99,8 @@ for (let i = 0; i < entryMade.length; i++) {
 
 }
 
+
+
 //Checks if our selection matches the letter in the game above, and if so display it byu changing the class to show
 function checkLetter(button) {
 
@@ -171,9 +173,9 @@ function checkWin() {
 //handles restarting all of our game elements without reloading the page
 function restartGame() {
 
-    const list = document.querySelectorAll('ul li');
+    const list = document.querySelectorAll('ul');
     missed = 0;
-
+    list.innerHTML = '';
     welcomeOverlay.className = 'start';
 
     for (let i = 0; i < list.length; i++) {
