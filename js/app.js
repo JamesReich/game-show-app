@@ -20,13 +20,14 @@ let gamePhrases = ['walk the dog',
 
 
 
-
+//Hides the start overlay on click
 startGame.addEventListener('click', () => {
 
     welcomeOverlay.style.display = 'none';
 
 });
 
+//Grabs array 'gamePhrases' and passes the characters into an array
 function getRandomPhraseAsArray(arr) {
 
     let randomSeed = Math.floor(Math.random() * 5);
@@ -38,6 +39,7 @@ function getRandomPhraseAsArray(arr) {
 
 }
 
+//Takes an array and appends its values to a list element depending on if it is a blank space or not
 function addPhraseToDisplay(arr) {
 
     for (let i = 0; i < arr.length; i++) {
@@ -64,13 +66,19 @@ function addPhraseToDisplay(arr) {
     return;
 }
 
+//Passes our array variable into the function
 const gameArray = getRandomPhraseAsArray(gamePhrases);
+
+//Passes our new array into the function that displays it/appends it to the screen
 addPhraseToDisplay(gameArray);
 
+
+//Highlights chosen letters/buttons on click
 for (let i = 0; i < entryMade.length; i++) {
 
 
     entryMade[i].addEventListener('click', () => {
+
 
 
         entryMade[i].classList.add('chosen');
@@ -81,6 +89,7 @@ for (let i = 0; i < entryMade.length; i++) {
 
         }
 
+
         checkLetter(entryMade[i]);
 
         checkWin();
@@ -89,7 +98,7 @@ for (let i = 0; i < entryMade.length; i++) {
 
 }
 
-
+//Checks if our selection matches the letter in the game above, and if so display it byu changing the class to show
 function checkLetter(button) {
 
     const letter = document.querySelectorAll('.letter');
@@ -107,13 +116,9 @@ function checkLetter(button) {
 
     if (letterFound == null) {
 
-        console.log(liveHeart[0].src);
-
         missed = missed + 1;
 
         liveHeart[missed - 1].src = "images/lostHeart.png"
-
-        console.log(missed)
 
 
     }
@@ -121,6 +126,8 @@ function checkLetter(button) {
     return letterFound;
 }
 
+
+//checks if we have won or lost, and gives the option to restart the game
 function checkWin() {
 
     let letter = document.querySelectorAll('.letter');
@@ -134,6 +141,7 @@ function checkWin() {
         welcomeOverlay.style.display = 'flex';
 
         startGame.addEventListener('click', () => {
+
 
             restartGame();
 
@@ -159,9 +167,37 @@ function checkWin() {
 
 }
 
+//handles restarting all of our game elements without reloading the page
 function restartGame() {
 
-    window.location.reload();
+    const list = document.querySelectorAll('ul li');
+    missed = 0;
+
+    welcomeOverlay.className = 'start';
+
+    for (let i = 0; i < list.length; i++) {
+        list[i].className = "";
+        list[i].textContent = "";
+    }
+
+
+
+    for (let i = 0; i < button.length; i++) {
+
+        button[i].className = '';
+        button[i].disabled = false;
+
+    }
+
+    for (let i = 0; i < liveHeart.length; i++) {
+
+        liveHeart[i].src = "images/liveHeart.png";
+
+    }
+
+
+    const gameArray = getRandomPhraseAsArray(gamePhrases);
+    addPhraseToDisplay(gameArray);
 
 }
 
