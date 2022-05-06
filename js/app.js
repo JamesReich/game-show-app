@@ -43,6 +43,7 @@ function addPhraseToDisplay(arr) {
     for (let i = 0; i < arr.length; i++) {
 
         let addListItem = document.createElement('li');
+        let addBlankSpace = document.createElement('li');
 
         addListItem.innerHTML = arr[i];
 
@@ -50,9 +51,14 @@ function addPhraseToDisplay(arr) {
 
             addListItem.className = 'letter';
 
+        } else if (arr[i] == ' ') {
+
+            addBlankSpace.className = 'space'
+
         }
 
         addListItem = phraseList.append(addListItem);
+        addBlankSpace = phraseList.append(addBlankSpace);
 
     }
     return;
